@@ -1,0 +1,31 @@
+- name: Single Handler
+  hosts: n01610736-c-vm-1.canadacentral.cloudapp.azure.com
+
+  tasks:
+    - name: Install Apache web server
+      dnf:
+        name: httpd
+        state: present
+     
+    - name: Add hostname to index.html
+      lineinfile:
+        path: /var/www/html/index.html
+        line: 'Hi, this is the Hostname created by Ruchika as a part of Cloud Security final lab: {{ ansible_hostname }}'
+        create: yes
+      notify: restart apache
+
+    - name: Enable Apache to auto-start 
+      service:
+        name: httpd
+        enabled: yes
+
+    - name: Start
+      service:
+        name: httpd
+        state: started
+
+  handlers:
+    - name: restart apache
+      service:
+        name: httpd
+        state: restarted
