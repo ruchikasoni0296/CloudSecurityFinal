@@ -1,0 +1,12 @@
+variable "vnet_name" {}
+variable "vnet_space" {}
+variable "location" {}
+variable "network-rg" {}
+variable "subnet1" {}
+variable "subnet2" {}
+variable "resource_group_net_name" {}
+variable "resource_group_net_loc" {}
+variable "subnet1_space" {}
+variable "subnet2_space" {}
+variable "net_security_group1" {}
+variable "net_security_group2" {}
